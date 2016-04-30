@@ -3,6 +3,27 @@
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Psong");
 
+	sf::Texture ballTexture;
+	sf::Texture paddle1Texture;
+	sf::Texture paddle2Texture;
+
+	sf::Sprite ballSprite;
+	sf::Sprite paddle1Sprite;
+	sf::Sprite paddle2Sprite;
+
+	ballTexture.loadFromFile("assets/gfx/sprites/ball.png");
+	paddle1Texture.loadFromFile("assets/gfx/sprites/paddle1.png");
+	paddle2Texture.loadFromFile("assets/gfx/sprites/paddle2.png");
+
+	ballSprite.setTexture(ballTexture);
+	paddle1Sprite.setTexture(paddle1Texture);
+	paddle2Sprite.setTexture(paddle2Texture);
+
+	// start everything centered
+	ballSprite.setPosition(window.getSize().x / 2, window.getSize().y / 2 - ballSprite.getGlobalBounds().height / 2);
+	paddle1Sprite.setPosition(5, window.getSize().y / 2 - paddle1Sprite.getGlobalBounds().height / 2);
+	paddle2Sprite.setPosition(window.getSize().x - paddle1Sprite.getGlobalBounds().width - 5, window.getSize().y / 2 - paddle2Sprite.getGlobalBounds().height / 2);
+
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -11,6 +32,9 @@ int main() {
 			}
 		}
 		window.clear();
+		window.draw(ballSprite);
+		window.draw(paddle1Sprite);
+		window.draw(paddle2Sprite);
 		window.display();
 	}
 	return 0;
