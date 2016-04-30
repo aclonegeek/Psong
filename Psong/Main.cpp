@@ -24,13 +24,33 @@ int main() {
 	paddle1Sprite.setPosition(5, window.getSize().y / 2 - paddle1Sprite.getGlobalBounds().height / 2);
 	paddle2Sprite.setPosition(window.getSize().x - paddle1Sprite.getGlobalBounds().width - 5, window.getSize().y / 2 - paddle2Sprite.getGlobalBounds().height / 2);
 
+	sf::Clock clock;
+
+	const float paddleSpeed = 500.0f;
+
 	while (window.isOpen()) {
 		sf::Event event;
+		float deltaTime = clock.restart().asSeconds();
+
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
 		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+			paddle1Sprite.move(0, -paddleSpeed * deltaTime);
+		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+			paddle1Sprite.move(0, paddleSpeed * deltaTime);
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			paddle2Sprite.move(0, -paddleSpeed * deltaTime);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			paddle2Sprite.move(0, paddleSpeed * deltaTime);
+		}
+
 		window.clear();
 		window.draw(ballSprite);
 		window.draw(paddle1Sprite);
