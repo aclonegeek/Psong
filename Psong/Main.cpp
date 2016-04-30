@@ -1,9 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML Game");
-	sf::CircleShape circle(100.0f);
-	circle.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "Psong");
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -13,7 +11,6 @@ int main() {
 			}
 		}
 		window.clear();
-		window.draw(circle);
 		window.display();
 	}
 	return 0;
