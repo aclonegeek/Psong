@@ -5,8 +5,8 @@
 
 class Entity {
 public:
-	Entity(std::string filename) {
-		texture.loadFromFile("assets/gfx/sprites/" + filename);
+	Entity() {
+
 	}
 
 	virtual void load(std::string filename) {
@@ -14,16 +14,17 @@ public:
 		sprite.setTexture(texture);
 	}
 
-	virtual void update() {
-		sprite.move(velocity.x, velocity.y);
+	virtual void update(float dt) {
+		sprite.move(velocity.x * dt, velocity.y * dt);
 	}
 
-	bool checkCollision(sf::Sprite sprite) {
-		return this->sprite.getGlobalBounds().intersects(sprite.getGlobalBounds());
+	bool checkCollision(Entity entity) {
+		return this->sprite.getGlobalBounds().intersects(entity.sprite.getGlobalBounds());
 	}
 
 	sf::Vector2f velocity;
+protected:
+	sf::Sprite sprite;
 private:
 	sf::Texture texture;
-	sf::Sprite sprite;
 };
