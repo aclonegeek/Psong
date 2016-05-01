@@ -27,6 +27,11 @@ int main() {
 	sf::Clock clock;
 
 	const float paddleSpeed = 500.0f;
+	const float ballSpeed = 100.0f;
+
+	sf::Vector2f ballVelocity;
+	ballVelocity.x = ballSpeed;
+	ballVelocity.y = ballSpeed;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -65,6 +70,20 @@ int main() {
 			paddle2Sprite.move(0, paddleSpeed * deltaTime);
 		} else if (paddle2Sprite.getPosition().y + paddle2Sprite.getGlobalBounds().height > window.getSize().y) {
 			paddle2Sprite.move(0, -paddleSpeed * deltaTime);
+		}
+
+		ballSprite.move(ballVelocity.x * deltaTime, ballVelocity.y * deltaTime);
+
+		if (ballSprite.getPosition().x < 0) {
+			ballSprite.setPosition(window.getSize().x / 2, window.getSize().y / 2 - ballSprite.getGlobalBounds().height / 2);
+		}
+		if (ballSprite.getPosition().x + ballSprite.getGlobalBounds().width > window.getSize().x) {
+			ballSprite.setPosition(window.getSize().x / 2, window.getSize().y / 2 - ballSprite.getGlobalBounds().height / 2);
+		}
+
+		if (ballSprite.getPosition().y < 0 || 
+			ballSprite.getPosition().y + ballSprite.getGlobalBounds().height > window.getSize().y) {
+			ballVelocity.y *= -1;
 		}
 
 		window.clear();
