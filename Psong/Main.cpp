@@ -86,6 +86,14 @@ int main() {
 			ballVelocity.y *= -1;
 		}
 
+		if (ballSprite.getGlobalBounds().intersects(paddle1Sprite.getGlobalBounds())) {
+			ballVelocity.x *= -1;
+		}
+
+		if (ballSprite.getGlobalBounds().intersects(paddle2Sprite.getGlobalBounds())) {
+			ballVelocity.x *= -1;
+		}
+
 		window.clear();
 		window.draw(ballSprite);
 		window.draw(paddle1Sprite);
