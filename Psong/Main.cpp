@@ -38,17 +38,33 @@ int main() {
 			}
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+			window.close();
+		}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 			paddle1Sprite.move(0, -paddleSpeed * deltaTime);
-		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 			paddle1Sprite.move(0, paddleSpeed * deltaTime);
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			paddle2Sprite.move(0, -paddleSpeed * deltaTime);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 			paddle2Sprite.move(0, paddleSpeed * deltaTime);
+		}
+
+		if (paddle1Sprite.getPosition().y < 0) {
+			paddle1Sprite.move(0, paddleSpeed * deltaTime);
+		} else if (paddle1Sprite.getPosition().y + paddle1Sprite.getGlobalBounds().height > window.getSize().y) {
+			paddle1Sprite.move(0, -paddleSpeed * deltaTime);
+		}
+
+		if (paddle2Sprite.getPosition().y < 0) {
+			paddle2Sprite.move(0, paddleSpeed * deltaTime);
+		} else if (paddle2Sprite.getPosition().y + paddle2Sprite.getGlobalBounds().height > window.getSize().y) {
+			paddle2Sprite.move(0, -paddleSpeed * deltaTime);
 		}
 
 		window.clear();
