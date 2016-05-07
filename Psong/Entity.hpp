@@ -23,7 +23,6 @@ public:
 	}
 
 	sf::Vector2f velocity;
-protected:
 	sf::Sprite sprite;
 private:
 	sf::Texture texture;
