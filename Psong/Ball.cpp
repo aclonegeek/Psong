@@ -31,7 +31,3 @@ void Ball::update(float dt, int windowWidth, int windowHeight) {
 
 	Entity::update(dt);
 }
-
-void Ball::reset(int windowWidth, int windowHeight) {
-	sprite.setPosition(windowWidth / 2, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
-}
