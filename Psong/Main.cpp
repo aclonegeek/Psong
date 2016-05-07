@@ -8,6 +8,7 @@ int main() {
 	sf::Clock clock;
 
 	MainGame game;
+	game.initialize(window);
 
 	while (window.isOpen()) {
 		sf::Event event;

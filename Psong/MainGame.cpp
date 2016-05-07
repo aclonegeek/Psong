@@ -3,11 +3,13 @@
 #include "MainGame.hpp"
 
 MainGame::MainGame(): paddle1(true), paddle2(false), ball(paddle1, paddle1) {
-	
+
 }
 
 void MainGame::initialize(sf::RenderWindow& window) {
-
+	ball.reset(window.getSize().x, window.getSize().y);
+	paddle1.reset(window.getSize().x, window.getSize().y);
+	paddle2.reset(window.getSize().x, window.getSize().y);
 }
 
 void MainGame::update(sf::RenderWindow& window, const float& dt) {
