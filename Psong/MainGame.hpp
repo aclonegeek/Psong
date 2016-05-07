@@ -6,6 +6,7 @@
 
 class MainGame {
 public:
+	MainGame();
 	void initialize(sf::RenderWindow& window);
 	void update(sf::RenderWindow& window, const float& dt);
 	void render(sf::RenderWindow& window);

@@ -5,13 +5,9 @@
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Psong");
-
 	sf::Clock clock;
-	const float ballSpeed = 300.0f;
 
-	sf::Vector2f ballVelocity;
-	ballVelocity.x = ballSpeed;
-	ballVelocity.y = ballSpeed;
+	MainGame game;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -27,10 +23,9 @@ int main() {
 			window.close();
 		}
 
-		ballSprite.move(ballVelocity.x * dt, ballVelocity.y * dt);
-
 		window.clear();
-		window.draw(ballSprite);
+		game.update(window, dt);
+		game.render(window);
 		window.display();
 	}
 	return 0;
