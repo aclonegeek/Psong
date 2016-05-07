@@ -2,7 +2,10 @@
 
 #include "MainGame.hpp"
 
-MainGame::MainGame() : paddle1(true), paddle2(false), ball(paddle1, paddle1) {
+MainGame::MainGame()
+	: paddle1(true)
+	, paddle2(false)
+	, ball(paddle1, paddle1) {
 
 }
 
@@ -13,6 +16,7 @@ void MainGame::initialize(sf::RenderWindow& window) {
 }
 
 void MainGame::update(sf::RenderWindow& window, const float& dt) {
+	ball.update(dt, window.getSize().x, window.getSize().y);
 	paddle1.update(dt, window.getSize().x, window.getSize().y);
 	paddle2.update(dt, window.getSize().x, window.getSize().y);
 }

@@ -20,6 +20,10 @@ int main() {
 			}
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+			game.initialize(window);
+		}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 			window.close();
 		}
