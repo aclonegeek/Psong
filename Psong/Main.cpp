@@ -1,6 +1,3 @@
-// todo:
-// 1. fix paddle movement (don't mix the vector2f and hand doing the vals)
-
 #include "MainGame.hpp"
 
 int main() {
