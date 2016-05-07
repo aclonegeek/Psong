@@ -35,7 +35,7 @@ void Paddle::update(float dt, int windowWidth, int windowHeight) {
 
 	if (sprite.getPosition().y < 0) {
 		sprite.move(0, speed * dt);
-	} else if (sprite.getPosition().y + sprite.getGlobalBounds().height > 720) { // fix this so we don't hack numbers in
+	} else if (sprite.getPosition().y + sprite.getGlobalBounds().height > windowHeight) {
 		sprite.move(0, -speed * dt);
 	}
 }
