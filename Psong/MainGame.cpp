@@ -22,9 +22,9 @@ void MainGame::update(sf::RenderWindow& window, const float& dt) {
 }
 
 void MainGame::render(sf::RenderWindow& window) {
-	window.draw(paddle1.sprite);
-	window.draw(paddle2.sprite);
-	window.draw(ball.sprite);
+	window.draw(paddle1.getSprite());
+	window.draw(paddle2.getSprite());
+	window.draw(ball.getSprite());
 }
 
 void MainGame::destroy(sf::RenderWindow& window) {

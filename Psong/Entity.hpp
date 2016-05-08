@@ -26,7 +26,12 @@ public:
 		return this->sprite.getGlobalBounds().intersects(entity.sprite.getGlobalBounds());
 	}
 
+	sf::Sprite getSprite() {
+		return sprite;
+	}
+
 	sf::Vector2f velocity;
+protected:
 	sf::Sprite sprite;
 private:
 	sf::Texture texture;
