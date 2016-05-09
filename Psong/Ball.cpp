@@ -11,14 +11,6 @@ Ball::Ball(Paddle& paddle1, Paddle& paddle2) {
 }
 
 void Ball::update(float dt, int windowWidth, int windowHeight) {
-	if (this->checkCollision(*this->paddle1)) {
-		this->velocity.x *= -1;
-	}
-
-	if (this->checkCollision(*this->paddle2)) {
-		this->velocity.x *= -1;
-	}
-
 	if (sprite.getPosition().x < 0) {
 		sprite.setPosition(windowWidth / 2, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	}

@@ -32,6 +32,10 @@ void MainGame::update(sf::RenderWindow& window, const float& dt) {
 	ball.update(dt, window.getSize().x, window.getSize().y);
 	paddle1.update(dt, window.getSize().x, window.getSize().y);
 	paddle2.update(dt, window.getSize().x, window.getSize().y);
+
+	if (ball.checkCollision(paddle1) || ball.checkCollision(paddle2)) {
+		ball.velocity.x *= -1;
+	}
 }
 
 void MainGame::render(sf::RenderWindow& window) {
