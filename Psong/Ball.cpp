@@ -4,13 +4,13 @@
 #include <cstdlib>
 #include <ctime>
 
-Ball::Ball(Paddle& paddle1, Paddle& paddle2) {
+Ball::Ball(const Paddle& paddle1, const Paddle& paddle2) 
+	: paddle1(&paddle1)
+	, paddle2(&paddle2) {
 	this->load("ball.png");
-	this->paddle1 = &paddle1;
-	this->paddle2 = &paddle2;
 }
 
-void Ball::update(float dt, int windowWidth, int windowHeight) {
+void Ball::update(const float dt, const int windowWidth, const int windowHeight) {
 	if (sprite.getPosition().x < 0) {
 		sprite.setPosition(windowWidth / 2, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	}
@@ -27,7 +27,7 @@ void Ball::update(float dt, int windowWidth, int windowHeight) {
 	Entity::update(dt);
 }
 
-void Ball::reset(int windowWidth, int windowHeight) {
+void Ball::reset(const int windowWidth, const int windowHeight) {
 	std::srand(std::time(0));
 	int rand = std::rand() % 4 + 1;
 	

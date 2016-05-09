@@ -9,7 +9,7 @@ MainGame::MainGame()
 
 }
 
-void MainGame::initialize(sf::RenderWindow& window) {
+void MainGame::initialize(const sf::RenderWindow& window) {
 	ball.reset(window.getSize().x, window.getSize().y);
 	paddle1.reset(window.getSize().x, window.getSize().y);
 	paddle2.reset(window.getSize().x, window.getSize().y);
@@ -28,7 +28,7 @@ void MainGame::initialize(sf::RenderWindow& window) {
 	score2.setPosition(window.getSize().x - score2.getGlobalBounds().width - 3, 3);
 }
 
-void MainGame::update(sf::RenderWindow& window, const float& dt) {
+void MainGame::update(const sf::RenderWindow& window, const float& dt) {
 	ball.update(dt, window.getSize().x, window.getSize().y);
 	paddle1.update(dt, window.getSize().x, window.getSize().y);
 	paddle2.update(dt, window.getSize().x, window.getSize().y);
@@ -46,6 +46,6 @@ void MainGame::render(sf::RenderWindow& window) {
 	window.draw(paddle2.getSprite());
 }
 
-void MainGame::destroy(sf::RenderWindow& window) {
+void MainGame::destroy(const sf::RenderWindow& window) {
 
 }

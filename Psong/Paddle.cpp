@@ -2,23 +2,21 @@
 
 #include "Paddle.hpp"
 
-Paddle::Paddle(bool playerOne) {
-	this->playerOne = playerOne;
-
+Paddle::Paddle(const bool playerOne) 
+	: playerOne(playerOne)
+	, score(0) {
 	if (this->playerOne) {
 		this->load("paddle1.png");
 	} else {
 		this->load("paddle2.png");
 	}
-
-	this->score = 0;
 }
 
-void Paddle::setPlayerOne(bool playerOne) {
+void Paddle::setPlayerOne(const bool playerOne) {
 	this->playerOne = playerOne;
 }
 
-void Paddle::update(float dt, int windowWidth, int windowHeight) {
+void Paddle::update(const float dt, const int windowWidth, const int windowHeight) {
 	if (this->playerOne) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 			sprite.move(0, -speed * dt);
@@ -42,7 +40,7 @@ void Paddle::update(float dt, int windowWidth, int windowHeight) {
 	}
 }
 
-void Paddle::reset(int windowWidth, int windowHeight) {
+void Paddle::reset(const int windowWidth, const int windowHeight) {
 	if (this->playerOne) {
 		sprite.setPosition(5, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	} else {
