@@ -4,9 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 
-Ball::Ball(const Paddle& paddle1, const Paddle& paddle2) 
-	: paddle1(&paddle1)
-	, paddle2(&paddle2) {
+Ball::Ball() {
 	this->load("ball.png");
 }
 
