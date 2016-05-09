@@ -11,6 +11,7 @@ public:
 	void update(const sf::RenderWindow& window, const float& dt);
 	void render(sf::RenderWindow& window);
 	void destroy(const sf::RenderWindow& window);
+	void reset(const sf::RenderWindow& window);
 private:
 	Ball ball;
 	Paddle paddle1;

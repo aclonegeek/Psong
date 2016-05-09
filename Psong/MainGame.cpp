@@ -49,3 +49,11 @@ void MainGame::render(sf::RenderWindow& window) {
 void MainGame::destroy(const sf::RenderWindow& window) {
 
 }
+
+void MainGame::reset(const sf::RenderWindow& window) {
+	ball.reset(window.getSize().x, window.getSize().y);
+	paddle1.reset(window.getSize().x, window.getSize().y);
+	paddle2.reset(window.getSize().x, window.getSize().y);
+	score1.setString("0");
+	score2.setString("0");
+}
