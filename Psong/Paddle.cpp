@@ -10,6 +10,8 @@ Paddle::Paddle(bool playerOne) {
 	} else {
 		this->load("paddle2.png");
 	}
+
+	this->score = 0;
 }
 
 void Paddle::setPlayerOne(bool playerOne) {
@@ -46,4 +48,12 @@ void Paddle::reset(int windowWidth, int windowHeight) {
 	} else {
 		sprite.setPosition(windowWidth - sprite.getGlobalBounds().width - 5, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	}
+}
+
+const int Paddle::getScore() {
+	return this->score;
+}
+
+void Paddle::incrementScore() {
+	this->score++;
 }

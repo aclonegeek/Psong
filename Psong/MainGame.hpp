@@ -15,4 +15,7 @@ private:
 	Ball ball;
 	Paddle paddle1;
 	Paddle paddle2;
+	sf::Font font;
+	sf::Text score1;
+	sf::Text score2;
 };
