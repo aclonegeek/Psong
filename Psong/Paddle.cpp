@@ -41,6 +41,8 @@ void Paddle::update(const float dt, const int windowWidth, const int windowHeigh
 }
 
 void Paddle::reset(const int windowWidth, const int windowHeight) {
+	this->score = 0;
+	
 	if (this->playerOne) {
 		sprite.setPosition(5, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	} else {
@@ -48,8 +50,8 @@ void Paddle::reset(const int windowWidth, const int windowHeight) {
 	}
 }
 
-const int Paddle::getScore() {
-	return this->score;
+const std::string Paddle::getScore() {
+	return std::to_string(this->score);
 }
 
 void Paddle::incrementScore() {

@@ -5,7 +5,7 @@
 MainGame::MainGame()
 	: paddle1(true)
 	, paddle2(false)
-	, ball(paddle1, paddle1) {
+	, ball(paddle1, paddle2) {
 
 }
 
@@ -32,6 +32,10 @@ void MainGame::update(const sf::RenderWindow& window, const float& dt) {
 	ball.update(dt, window.getSize().x, window.getSize().y);
 	paddle1.update(dt, window.getSize().x, window.getSize().y);
 	paddle2.update(dt, window.getSize().x, window.getSize().y);
+
+	//todo: implement a better way to do this so it only changes on a score
+	score1.setString(paddle1.getScore());
+	score2.setString(paddle2.getScore());
 
 	if (ball.checkCollision(paddle1) || ball.checkCollision(paddle2)) {
 		ball.velocity.x *= -1;

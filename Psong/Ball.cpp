@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 
-Ball::Ball(const Paddle& paddle1, const Paddle& paddle2) 
+Ball::Ball(Paddle& paddle1, Paddle& paddle2) 
 	: paddle1(&paddle1)
 	, paddle2(&paddle2) {
 	this->load("ball.png");
@@ -12,10 +12,12 @@ Ball::Ball(const Paddle& paddle1, const Paddle& paddle2)
 
 void Ball::update(const float dt, const int windowWidth, const int windowHeight) {
 	if (sprite.getPosition().x < 0) {
+		paddle2->incrementScore();
 		sprite.setPosition(windowWidth / 2, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	}
 
 	if (sprite.getPosition().x + sprite.getGlobalBounds().width > windowWidth) {
+		paddle1->incrementScore();
 		sprite.setPosition(windowWidth / 2, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
 	}
 
