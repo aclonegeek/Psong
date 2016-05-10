@@ -5,7 +5,7 @@
 MainGame::MainGame()
 	: paddle1(true)
 	, paddle2(false)
-	, ball() {
+	, ball(paddle1, paddle1) {
 
 }
 
