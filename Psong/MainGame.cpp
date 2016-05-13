@@ -6,7 +6,9 @@ MainGame::MainGame()
 	: paddle1(true)
 	, paddle2(false)
 	, ball(paddle1, paddle2) {
-
+	buffer.loadFromFile("assets/audio/hit.wav");
+	hit.setBuffer(buffer);
+	hit.setVolume(10.0f);
 }
 
 void MainGame::initialize(const sf::RenderWindow& window) {
@@ -38,6 +40,7 @@ void MainGame::update(const sf::RenderWindow& window, const float& dt) {
 	score2.setString(paddle2.getScore());
 
 	if (ball.checkCollision(paddle1) || ball.checkCollision(paddle2)) {
+		hit.play();
 		ball.velocity.x *= -1;
 	}
 }

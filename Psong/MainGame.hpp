@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Paddle.hpp"
 #include "Ball.hpp"
 
@@ -19,4 +20,6 @@ private:
 	sf::Font font;
 	sf::Text score1;
 	sf::Text score2;
+	sf::Sound hit;
+	sf::SoundBuffer buffer;
 };
