@@ -10,12 +10,12 @@ public:
 	}
 
 	virtual void load(std::string filename) {
-		texture.loadFromFile("assets/gfx/sprites/" + filename);
-		sprite.setTexture(texture);
+		m_texture.loadFromFile("assets/gfx/sprites/" + filename);
+		sprite.setTexture(m_texture);
 	}
 
-	virtual void update(float dt) {
-		sprite.move(velocity.x * dt, velocity.y * dt);
+	virtual void update(const sf::Time dt) {
+		sprite.move(velocity.x * dt.asSeconds(), velocity.y * dt.asSeconds());
 	}
 
 	bool checkCollision(Entity entity) {
@@ -30,5 +30,5 @@ public:
 protected:
 	sf::Sprite sprite;
 private:
-	sf::Texture texture;
+	sf::Texture m_texture;
 };

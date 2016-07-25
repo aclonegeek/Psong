@@ -6,7 +6,7 @@
 class Ball : public Entity {
 public:
 	Ball(Paddle& paddle1, Paddle& paddle2);
-	void update(const float dt, const int windowWidth, const int windowHeight);
+	void update(const sf::Time dt, const int windowWidth, const int windowHeight);
 	void reset(const int windowWidth, const int windowHeight);
 private:
 	Paddle* paddle1;

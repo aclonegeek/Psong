@@ -10,7 +10,7 @@ Ball::Ball(Paddle& paddle1, Paddle& paddle2)
 	this->load("ball.png");
 }
 
-void Ball::update(const float dt, const int windowWidth, const int windowHeight) {
+void Ball::update(const sf::Time dt, const int windowWidth, const int windowHeight) {
 	if (sprite.getPosition().x < 0) {
 		paddle2->incrementScore();
 		sprite.setPosition(windowWidth / 2.0f, windowHeight / 2.0f - sprite.getGlobalBounds().height / 2.0f);

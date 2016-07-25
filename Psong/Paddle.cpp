@@ -16,27 +16,27 @@ void Paddle::setPlayerOne(const bool playerOne) {
 	this->playerOne = playerOne;
 }
 
-void Paddle::update(const float dt, const int windowWidth, const int windowHeight) {
+void Paddle::update(const sf::Time dt, const int windowWidth, const int windowHeight) {
 	if (this->playerOne) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-			sprite.move(0, -speed * dt);
+			sprite.move(0, -speed * dt.asSeconds());
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			sprite.move(0, speed * dt);
+			sprite.move(0, speed * dt.asSeconds());
 		}
 	} else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			sprite.move(0, -speed * dt);
+			sprite.move(0, -speed * dt.asSeconds());
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			sprite.move(0, speed * dt);
+			sprite.move(0, speed * dt.asSeconds());
 		}
 	}
 
 	Entity::update(dt);
 
 	if (sprite.getPosition().y < 0) {
-		sprite.move(0, speed * dt);
+		sprite.move(0, speed * dt.asSeconds());
 	} else if (sprite.getPosition().y + sprite.getGlobalBounds().height > windowHeight) {
-		sprite.move(0, -speed * dt);
+		sprite.move(0, -speed * dt.asSeconds());
 	}
 }
 
