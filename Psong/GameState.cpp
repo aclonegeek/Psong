@@ -51,7 +51,7 @@ void GameState::processEvents() {
 			break;
 		case sf::Event::KeyPressed:
 			switch (event.key.code) {
-				case sf::Keyboard::Escape:
+				case sf::Keyboard::M:
 				{
 					std::unique_ptr<State> menuState(new MenuState(m_stateManager, m_window));
 					m_stateManager.stateToChangeTo(std::move(menuState));
@@ -60,12 +60,15 @@ void GameState::processEvents() {
 				case sf::Keyboard::R:
 					reset();
 					break;
+				case sf::Keyboard::Escape:
+					m_stateManager.quit();
+					break;
 			}
 		}
 	}
 }
 
-void GameState::update(sf::Time dt) {
+void GameState::update(const sf::Time& dt) {
 	m_ball.update(dt, m_window.getSize().x, m_window.getSize().y);
 	m_paddle1.update(dt, m_window.getSize().x, m_window.getSize().y);
 	m_paddle2.update(dt, m_window.getSize().x, m_window.getSize().y);

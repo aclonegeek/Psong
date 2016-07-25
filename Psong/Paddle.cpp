@@ -2,58 +2,58 @@
 
 #include "Paddle.hpp"
 
-Paddle::Paddle(const bool playerOne) 
-	: playerOne(playerOne)
-	, score(0) {
-	if (this->playerOne) {
-		this->load("paddle1.png");
+Paddle::Paddle(const bool m_playerOne) 
+	: m_playerOne(m_playerOne)
+	, m_score(0) {
+	if (m_playerOne) {
+		load("paddle1.png");
 	} else {
-		this->load("paddle2.png");
+		load("paddle2.png");
 	}
 }
 
 void Paddle::setPlayerOne(const bool playerOne) {
-	this->playerOne = playerOne;
+	m_playerOne = playerOne;
 }
 
 void Paddle::update(const sf::Time dt, const int windowWidth, const int windowHeight) {
-	if (this->playerOne) {
+	if (m_playerOne) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-			sprite.move(0, -speed * dt.asSeconds());
+			m_sprite.move(0, -m_speed * dt.asSeconds());
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			sprite.move(0, speed * dt.asSeconds());
+			m_sprite.move(0, m_speed * dt.asSeconds());
 		}
 	} else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			sprite.move(0, -speed * dt.asSeconds());
+			m_sprite.move(0, -m_speed * dt.asSeconds());
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			sprite.move(0, speed * dt.asSeconds());
+			m_sprite.move(0, m_speed * dt.asSeconds());
 		}
 	}
 
 	Entity::update(dt);
 
-	if (sprite.getPosition().y < 0) {
-		sprite.move(0, speed * dt.asSeconds());
-	} else if (sprite.getPosition().y + sprite.getGlobalBounds().height > windowHeight) {
-		sprite.move(0, -speed * dt.asSeconds());
+	if (m_sprite.getPosition().y < 0) {
+		m_sprite.move(0, m_speed * dt.asSeconds());
+	} else if (m_sprite.getPosition().y + m_sprite.getGlobalBounds().height > windowHeight) {
+		m_sprite.move(0, -m_speed * dt.asSeconds());
 	}
 }
 
 void Paddle::reset(const int windowWidth, const int windowHeight) {
-	this->score = 0;
+	m_score = 0;
 	
-	if (this->playerOne) {
-		sprite.setPosition(5, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
+	if (m_playerOne) {
+		m_sprite.setPosition(5, windowHeight / 2 - m_sprite.getGlobalBounds().height / 2);
 	} else {
-		sprite.setPosition(windowWidth - sprite.getGlobalBounds().width - 5, windowHeight / 2 - sprite.getGlobalBounds().height / 2);
+		m_sprite.setPosition(windowWidth - m_sprite.getGlobalBounds().width - 5, windowHeight / 2 - m_sprite.getGlobalBounds().height / 2);
 	}
 }
 
-const std::string Paddle::getScore() {
-	return std::to_string(this->score);
+const std::string Paddle::getScore() const {
+	return std::to_string(m_score);
 }
 
 void Paddle::incrementScore() {
-	this->score++;
+	m_score++;
 }

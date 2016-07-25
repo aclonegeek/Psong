@@ -1,34 +1,31 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include <string>
 
 class Entity {
 public:
-	Entity() {
+	Entity() {}
 
-	}
-
-	virtual void load(std::string filename) {
+	virtual void load(const std::string& filename) {
 		m_texture.loadFromFile("assets/gfx/sprites/" + filename);
-		sprite.setTexture(m_texture);
+		m_sprite.setTexture(m_texture);
 	}
 
 	virtual void update(const sf::Time dt) {
-		sprite.move(velocity.x * dt.asSeconds(), velocity.y * dt.asSeconds());
+		m_sprite.move(velocity.x * dt.asSeconds(), velocity.y * dt.asSeconds());
 	}
 
-	bool checkCollision(Entity entity) {
-		return this->sprite.getGlobalBounds().intersects(entity.sprite.getGlobalBounds());
+	const bool checkCollision(const Entity& entity) const {
+		return this->m_sprite.getGlobalBounds().intersects(entity.m_sprite.getGlobalBounds());
 	}
 
-	sf::Sprite getSprite() {
-		return sprite;
+	const sf::Sprite getSprite() const {
+		return m_sprite;
 	}
 
 	sf::Vector2f velocity;
 protected:
-	sf::Sprite sprite;
+	sf::Sprite m_sprite;
 private:
 	sf::Texture m_texture;
 };
