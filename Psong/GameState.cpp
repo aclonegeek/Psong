@@ -19,8 +19,8 @@ GameState::GameState(StateManager& stateManager, sf::RenderWindow& window)
 	m_score2.setFont(m_font);
 	m_score1.setColor(sf::Color::White);
 	m_score2.setColor(sf::Color::White);
-	m_score1.setPosition(3, 3);
-	m_score2.setPosition(m_window.getSize().x - 28, 3);
+	m_score1.setPosition(3.0f, 3.0f);
+	m_score2.setPosition(m_window.getSize().x - 28.0f, 3.0f);
 
 	reset();
 }
